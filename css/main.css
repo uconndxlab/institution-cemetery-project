@@ -1,5 +1,5 @@
 #body{
-  font-family: proxima-nova, sans-serif;
+  font-family: lato, sans-serif;
 }
 
 h1{
@@ -12,6 +12,11 @@ h1{
 ul{
   list-style-type:none;
   padding-left:0px!important;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
 }
 
 .inner-cemeteries-ul{
@@ -31,9 +36,6 @@ ul{
   margin-bottom:10px;
 }
 
-p{
-  margin-bottom:5px!important;
-}
 
 .inner-cemetery p{
   margin-bottom:1rem!important;
@@ -41,10 +43,6 @@ p{
 
 h4{
   font-size:16px!important;
-}
-
-.filters{
-  margin:20px 0px;
 }
 
 #cemeteries-list{
@@ -86,7 +84,6 @@ h4{
   color:#fff;
   background-color:#3B833F;
   font-weight:600;
-  padding-left:-50px!important;
   padding:2px 5px;
   margin-right:5px;
 }
@@ -101,6 +98,29 @@ h4{
     width:100%;
 }
 
+.tool-tip {
+  position: relative; 
+  left: 35px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-name {
+  color: white;
+  padding: 2px 5px;
+  background-color: #000;
+   border-radius: 5px;
+  font-size: 14px;
+}
+
+.arrow-left {
+  width: 0; 
+  height: 0; 
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent; 
+  border-right: 5px solid black; 
+}
+
 .cemetery-figure{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr) );
@@ -113,14 +133,13 @@ h4{
 /* The container */
 .checkbox-contain {
   display: block;
-  position: relative;
-  padding-left: 30px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-bottom:2px;
+
+
 }
 
 /* Hide the browser's default checkbox */
@@ -132,29 +151,30 @@ h4{
   width: 0;
 }
 
-/* Create a custom checkbox */
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #e0e0e0;
+  border-radius: 15px;
+  border: 2px black solid;
+  padding: 10px;
+  margin: 5px;
 }
 
+.label-contain {
+  display: flex;
+}
+/* Create a custom checkbox */
+
+
 /* On mouse-over, add a grey background color */
-.checkbox-contain:hover input ~ .checkmark {
-  background-color: #3B833F;
+.checkbox-contain:hover input ~ .checkmark, .checkbox-contain input:checked ~ .checkmark  {
+  background-color: #1F4865;
+  color: white;
 }
 
 /* When the checkbox is checked, add a blue background */
-.checkbox-contain input:checked ~ .checkmark {
-  background-color: #3B833F;
-}
+
 
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
-  content: "";
   position: absolute;
   display: none;
 }
@@ -166,16 +186,36 @@ h4{
 
 /* Style the checkmark/indicator */
 .checkbox-contain .checkmark:after {
-  left: 8px;
-  top: 3px;
-  width: 5px;
-  height: 12px;
   border: solid white;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+
+.tags-container {
+display: flex;
+gap: 20px;
+}
+
+.tool-tip {
+  visibility: hidden;
+}
+
+button:hover ~ .tool-tip{
+  visibility: visible
+
+}
+
+button {
+  border: none;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .25);
+width: 30px;
+height: 30px
+;}
 
 @media screen and (min-width: 960px){
   #cemeteries-list li{

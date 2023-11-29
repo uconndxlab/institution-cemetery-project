@@ -1,4 +1,15 @@
 const cemeterylist = document.querySelector('#cemeteries-list');
+const filterButton = document.querySelector('#filter-toggle')
+const filterTags = document.querySelector('.filter-tags')
+
+filterButton.addEventListener('click', function(){
+  if (filterTags.style.display === "none") {
+    filterTags.style.display = "block"
+  }
+  else {
+    filterTags.style.display = "none"
+  }
+})
 
 //all cemeteries
 var cemeteries = []

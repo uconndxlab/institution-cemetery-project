@@ -15,11 +15,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/07604aa933.js" crossorigin="anonymous"></script>
   <meta name="theme-color" content="#fafafa">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <!--mapbox-->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js"></script>
 </head>
 
 <body id="body">
@@ -38,8 +41,10 @@
 <div class="container">
   <div>
     <h1>Institution Cemeteries Project</h1>
-    <img src="img/pennsylvania-map.png">
-    <div class="filter-container" style="position: relative">
+    <div id="map" style="position: absolute; top: 150px; bottom: 0; width: 50%; height:500px;">
+      
+    </div>
+    <div class="filter-container" style="position: relative; margin-top:550px;">
     <button style="position: absolute;"><i class="fa-solid fa-filter" id="filter-toggle"></i></button>
    <div class="tool-tip">
     <div class="arrow-left"></div>
@@ -120,6 +125,8 @@
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script>
+
+
     window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
   </script>

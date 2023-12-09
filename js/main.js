@@ -2,6 +2,19 @@ const cemeterylist = document.querySelector('#cemeteries-list');
 const filterButton = document.querySelector('#filter-toggle')
 const filterTags = document.querySelector('.filter-tags')
 
+/*setup mapbox*/
+mapboxgl.accessToken = 'pk.eyJ1IjoidGhlbmF0YXR0YWNrIiwiYSI6ImNscHZsbnQ1eTA1ZWsyam54eDEyaWJxZmEifQ.wHJKEX_kIr4v6ouiydlwRw';
+const map = new mapboxgl.Map({
+  container: 'map', // container ID
+  center: [-77.5, 41], // starting position [lng, lat]
+  zoom: 6 // starting zoom
+});
+
+map.addControl(new mapboxgl.NavigationControl());
+            
+//clear current map, get data, put data into array, map data
+var currentMarkers=[]
+
 filterButton.addEventListener('click', function(){
   if (filterTags.style.display === "none") {
     filterTags.style.display = "block"
@@ -28,6 +41,11 @@ async function getAllCemeteries(){
 
 //display cemeteries
 const renderList = cemeteries => {
+  if (currentMarkers!=null){
+    for (var i = currentMarkers.length - 1; i >= 0; i--){
+      currentMarkers[i].remove();
+    }
+  }
   cemeterylist.innerHTML = '';
     cemeteries.forEach(element => {
         var resourcelabel = document.createElement("p")
@@ -37,28 +55,34 @@ const renderList = cemeteries => {
           resourcelabelspan.innerHTML = element["tags"][i]
           resourcelabel.appendChild(resourcelabelspan)
         }
-        //var resourcelinklink = document.createElement("a")
-        //resourcelinklink.href = element["link"]
         var resourcetitle = document.createElement("h2")
         resourcetitle.innerHTML = element["name"]
-        //var resourcename = document.createElement("h4")
-        //resourcename.innerHTML = element["firstname"]+" "+element["lastname"]
-        //var resourcesnippet = document.createElement("p")
-        //resourcesnippet.innerHTML = element["snippet"]
         var resourcestate = document.createElement("p")
         resourcestate.innerHTML = element["state"]
         var listresource = document.createElement("li")
-        //var resourceimage = document.createElement("img")
-        //resourceimage.src = element["img"]
-        //resourcelinklink.appendChild(resourceimage)
         listresource.appendChild(resourcelabel)
         listresource.appendChild(resourcetitle)
-        //listresource.appendChild(resourcename)
         listresource.appendChild(resourcestate)
-        //resourcelinklink.appendChild(resourcesnippet)
-        //listresource.appendChild(resourcelinklink)
         listresource.classList.add("cemetery-block")
         document.querySelector('#cemeteries-list').appendChild(listresource)
+
+        //add to map
+        var el = document.createElement('div');
+          el.className = 'marker-red';
+          var marker = new mapboxgl.Marker(el)
+          .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
+          .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML(
+          '<h3>' +
+          element["name"] +
+          '</h3><p>' +
+          element["city"] +
+          '</p>'
+          )
+          )
+          .addTo(map);
+        currentMarkers.push(marker)
     })
   }
 
@@ -126,6 +150,12 @@ const renderList = cemeteries => {
         renderList(filteredArray)
     }   
   })
+
+
+
+  
+
+
 
   // Stuff to run when the DOM is ready
 window.addEventListener('DOMContentLoaded', async () =>{

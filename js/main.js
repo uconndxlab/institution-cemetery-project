@@ -1,7 +1,7 @@
 const cemeterylist = document.querySelector('#cemeteries-list');
 const filterButton = document.querySelector('#filter-toggle')
 const filterTags = document.querySelector('.filter-tags')
-
+const mapPopUp = document.querySelector("#map-popup")
 filterButton.addEventListener('click', function(){
   if (filterTags.style.display === "none") {
     filterTags.style.display = "block"
@@ -26,7 +26,6 @@ async function getAllCemeteries(){
   return await response.json();
 }
 
-//display cemeteries
 const renderList = cemeteries => {
   cemeterylist.innerHTML = '';
     cemeteries.forEach(element => {
@@ -65,7 +64,6 @@ const renderList = cemeteries => {
   //filtered array of cemeteries
   var filteredArray = []
 
-  //array of filters to apply
   var filtersArray = []
 
   //how categories are filtered using .filter
@@ -134,5 +132,19 @@ window.addEventListener('DOMContentLoaded', async () =>{
 
 })
 
+function readMore(){
+  const features = map.queryRenderedFeatures(event.point, {
+    layers: ['institution-cemetary-project-349it4']
+    });
+    if (!features.length) {
+    return;
+    }
+    const feature = features[0];
+mapPopUp.style.display = "inline"
+document.querySelector("#cemeteryImage").innerHTML = `<img src="${feature.properties.feat_img}">`
+document.querySelector("#title").innerHTML = `<h1>${feature.properties.name}</h1>`
+}
 
-
+function closeModal(){
+  mapPopUp.style.display = "none"
+}

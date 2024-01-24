@@ -290,14 +290,14 @@ button:hover ~ .tool-tip{
 
 }
 
-button {
+/* button {
   border: none;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, .25);
 width: 30px;
 height: 30px
-;}
+;} */
 
 .filters {
   background-color: white;
@@ -334,4 +334,63 @@ height: 30px
 .label-contain {
   flex-direction: row;
 }
+}
+
+body {
+margin: 0;
+padding: 0;
+}
+ 
+#map {
+width: 1000px;
+height: 500px;
+position: relative
+}
+
+#map-popup {
+  position: absolute;
+  background-color:white;
+  left: 5%;
+  top: 5%;
+  z-index: 20;
+  width: 90%;
+  height: 90%;
+  display: none;
+}
+
+.read-more-button {
+  border: none;
+  background-color: rgb(53, 121, 177);
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, .25);
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+}
+
+#cemeteryImage {
+  max-width: 200px;
+  height: auto;
+}
+
+.read-more-button:hover {
+  background-color: rgb(33, 78, 115);
+}
+
+.mapboxgl-popup-content {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 175px;
+  border-radius: 10px;
+}
+
+.cemetery-name {
+  font-size: 16px;
+}
+
+.description-text {
+  padding: 10px;
 }

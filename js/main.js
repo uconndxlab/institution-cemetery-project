@@ -48,23 +48,23 @@ const renderList = cemeteries => {
   }
   cemeterylist.innerHTML = '';
   cemeteries.forEach(element => {
-    var resourcelabel = document.createElement("p")
-    resourcelabel.classList.add("cemetery-label")
-    for (var i = 0; i < element["tags"].length; i++) {
-      var resourcelabelspan = document.createElement("span")
-      resourcelabelspan.innerHTML = element["tags"][i]
-      resourcelabel.appendChild(resourcelabelspan)
-    }
-    var resourcetitle = document.createElement("h2")
-    resourcetitle.innerHTML = element["name"]
-    var resourcestate = document.createElement("p")
-    resourcestate.innerHTML = element["state"]
-    var listresource = document.createElement("li")
-    listresource.appendChild(resourcelabel)
-    listresource.appendChild(resourcetitle)
-    listresource.appendChild(resourcestate)
-    listresource.classList.add("cemetery-block")
-    document.querySelector('#cemeteries-list').appendChild(listresource)
+    // var resourcelabel = document.createElement("p")
+    // resourcelabel.classList.add("cemetery-label")
+    // for (var i = 0; i < element["tags"].length; i++) {
+    //   var resourcelabelspan = document.createElement("span")
+    //   resourcelabelspan.innerHTML = element["tags"][i]
+    //   resourcelabel.appendChild(resourcelabelspan)
+    // }
+    // var resourcetitle = document.createElement("h2")
+    // resourcetitle.innerHTML = element["name"]
+    // var resourcestate = document.createElement("p")
+    // resourcestate.innerHTML = element["state"]
+    // var listresource = document.createElement("li")
+    // listresource.appendChild(resourcelabel)
+    // listresource.appendChild(resourcetitle)
+    // listresource.appendChild(resourcestate)
+    // listresource.classList.add("cemetery-block")
+    // document.querySelector('#cemeteries-list').appendChild(listresource)
 
     //add to map
     var el = document.createElement('div');

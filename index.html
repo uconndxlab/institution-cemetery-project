@@ -46,17 +46,21 @@
   </nav>
   <div class="container">
     <div>
-
       <div class="filter-container p-3" style="position: absolute; z-index: 100">
-        <button style="position: absolute;"><i class="fa-solid fa-filter" id="filter-toggle"></i></button>
-        <div class="tool-tip">
+        <div style="display: flex; align-items: center;">
+        <input class="search-bar" type="text" style="" placeholder="Search Insitution Cemetery"><i class="fa-solid fa-magnifying-glass" style="position: relative; right:25px"></i></input>
+        <div style="display: flex">
+        <button class="filter-button"><i class="fa-solid fa-filter" id="filter-toggle"></i></button>
+        <div class="tool-tip" style="position: relative; left: 10px">
           <div class="arrow-left"></div>
           <div class="filter-name">Filter</div>
         </div>
       </div>
-      <div class="filter-tags" style="display:none">
-        <section class="filters">
-          <div>
+      </div>
+      </div>
+      <div class="filter-tags" style="display:none; position: absolute; z-index: 100; top:100px;">
+        <section class="filters" style="  max-width: min-content;">
+          <div style="  max-width: min-content;">
             <p class="tags"><strong>Tags:</strong></p>
             <div class="label-contain">
               <label for="psychiatric" class="checkbox-contain">
@@ -78,13 +82,12 @@
               <option value="NY">NY</option>
             </select>
           </div>
-
+  
         </section>
         <ul id="cemeteries-list" class="">
-
+  
         </ul>
       </div>
-
       <div id="map">
         <div id="map-popup">
           <div id="cemeteryImage"></div>

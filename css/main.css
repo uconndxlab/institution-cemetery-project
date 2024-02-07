@@ -15,6 +15,10 @@ justify-content: center;
 margin: auto
 }
 
+strong {
+  font-size: 14px;
+}
+
 article {
   margin: 50px 0;
 }
@@ -254,12 +258,50 @@ footer {
   width: 0;
 }
 
+.filter-button {
+  background-color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+}
+
 .checkmark {
   border-radius: 15px;
-  border: 2px black solid;
+  border: 1px black solid;
   padding: 5px 10px;
   margin: 5px;
-  display:inline-block
+  display:inline-block;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+input[type="text"] {
+  font-size: 12px;
+}
+
+input::placeholder {
+  opacity: 0.5;
+  color: #6E6E6E;
+  font-size: 12px;
+}
+
+.search-bar {
+  width: 300px;
+  padding: 10px;
+  color: #6E6E6E;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+}
+
+.fa-magnifying-glass, .fa-filter {
+  color: #6E6E6E
+}
+
+i {
+  color: black
 }
 
 .label-contain {
@@ -330,6 +372,10 @@ height: 30px
   box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
 }
 
+.filter-tags {
+padding: 10px
+}
+
 @media screen and (min-width: 960px){
   #cemeteries-list li{
     margin-bottom:5%;
@@ -388,6 +434,11 @@ height: 500px;
   color: white;
   padding: 10px;
   font-size: 12px;
+}
+
+.tags{
+  margin: 5px;
+  max-width: min-content;
 }
 
 .pop-up-container {

@@ -160,12 +160,12 @@ categories.forEach(category => {
 let cemeteryDescription = document.querySelector("#cemeteryDescription")
 function readMore() {
   let readMoreButton = document.querySelector(".read-more-button")
+  filterTags.style.diplay = "none"
   mapPopUp.style.display = "inline"
-  console.log(cemeteries[(document.querySelector(".read-more-button").id)].name)
   cemeteryImage.innerHTML =
     `
-    <div class="pop-up-container">
-    <button onclick="closeModal()" class="close-button"><i class="fa-solid fa-x"></i></button>
+    <div class="pop-up-container" style="position:relative">
+    <button onclick="closeModal()" class="close-button" style="position:sticky; right: 0px"><i class="fa-solid fa-x"></i></button>
     <div>
     <img class="pop-up-image" src='${cemeteries[(readMoreButton.id)].feat_img}'>
     </div>

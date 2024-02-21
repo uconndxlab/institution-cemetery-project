@@ -37,11 +37,12 @@
   <![endif]-->
   <nav class="p-3">
     <div class="d-flex justify-content-between nav-inner">
-      <a style="font-family:'Libre Baskerville', serif">Institution Cemeteries Project</a>
-      <div class="d-flex gap-5">
+      <a style="font-family:'Libre Baskerville', serif">Institution Cemetery Project</a>
+      <div class="gap-5 navigation-items">
         <a href="#about" class="text-white">About</a>
         <a href="#the-film" class="text-white">The Film</a>
       </div>
+      <!-- <button class="d-flex align-items-center"><i class="fa-solid fa-bars text-white"></i></button> -->
     </div>
   </nav>
   <div class="container">
@@ -71,6 +72,10 @@
                 <input type="checkbox" id="active" value="Active Facility" class="category">
                 <span class="checkmark rounded-pill">Active Facility</span>
               </label>
+              <label for="state" class="checkbox-contain">
+                <input type="checkbox" id="state" value="State School" class="category">
+                <span class="checkmark rounded-pill">State School</span>
+              </label>
             </div>
           </div>
           <div>
@@ -89,7 +94,7 @@
         </ul>
       </div>
       <div id="map">
-        <div id="map-popup">
+        <div id="map-popup" style="z-index: 150">
           <div id="cemeteryImage"></div>
           <div id="cemeteryDescription"></div>
           <div id="title"></div>
@@ -141,7 +146,7 @@
   </article>
   <footer>
     <div>
-      <h2>The Fate of Human Beings</h2>
+      <h2>Institution Cemetery Project</h2>
     </div>
     <div>
       <div>

@@ -138,6 +138,30 @@ categories.forEach(category => {
     filterCemeteries()
   }
 
+  // Run a keyword search
+  document.querySelector('#search-btn').addEventListener('click', function(e) {
+    e.preventDefault()
+    if (document.querySelector('#search-bar').value.length !== 0){
+    keywordSearch()}
+    else{
+      loadCemeteries()
+    }
+  })
+
+  async function keywordSearch(){
+    cemeteries = [];
+    const query = document.querySelector('#search-bar').value;
+    console.log(query)
+    let allCemeteries= await this.getAllCemeteries();
+    allCemeteries.forEach(listing => {
+      if(listing.name.toLowerCase().indexOf(query.toLowerCase()) !== -1 ||
+      listing.description.toLowerCase().indexOf(query.toLowerCase()) !== -1){
+          cemeteries.push(listing)
+      }
+    });
+    filterCemeteries();
+  }
+
 
   //using filtersarray, filter the cemeteries and put into filtereedarray
   //take the first filter from filtercode then add additional features with && to hand to the .filter function
@@ -188,3 +212,10 @@ window.addEventListener('DOMContentLoaded', async () => {
   renderList(cemeteries)
 
 })
+
+window.addEventListener("DOMContentLoaded", () => loadCemeteries(), false);
+
+async function loadCemeteries() {
+  cemeteries = await getAllCemeteries()
+  renderList(cemeteries)
+}

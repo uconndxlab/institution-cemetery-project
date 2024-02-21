@@ -49,7 +49,10 @@
     <div>
       <div class="filter-container p-3" style="position: absolute; z-index: 100">
         <div style="display: flex; align-items: center;">
-        <input class="search-bar" type="text" placeholder="Search Insitution Cemetery"><i class="fa-solid fa-magnifying-glass" style="position: relative; right:25px"></i></input>
+          <form role="search">
+            <input id="search-bar" type="text" placeholder="Search Insitution Cemetery"></input>
+            <button id="search-btn" type="submit" class="btn btn-search"><i class="fa-solid fa-magnifying-glass" style="position: relative;"></i></button>
+          </form>  
         <div style="display: flex">
         <button class="filter-button"><i class="fa-solid fa-filter" id="filter-toggle"></i></button>
         <div class="tool-tip" style="position: relative; left: 10px">

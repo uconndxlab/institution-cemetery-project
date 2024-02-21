@@ -290,7 +290,7 @@ input::placeholder {
   font-size: 12px;
 }
 
-.search-bar {
+#search-bar {
   width: 300px;
   padding: 10px;
   color: #6E6E6E;
@@ -511,7 +511,7 @@ body {
     flex-direction: column;
   }
 
-  .search-bar {
+  #search-bar {
     width: 200px;
   }
 

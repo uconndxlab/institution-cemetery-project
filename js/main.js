@@ -3,6 +3,7 @@ const filterButton = document.querySelector('#filter-toggle')
 const filterTags = document.querySelector('.filter-tags')
 const mapPopUp = document.querySelector('#map-popup')
 const cemeteryImage = document.querySelector('#cemeteryImage')
+const searchForm = document.querySelector("#search-form")
 /*setup mapbox*/
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlbmF0YXR0YWNrIiwiYSI6ImNscHZsbnQ1eTA1ZWsyam54eDEyaWJxZmEifQ.wHJKEX_kIr4v6ouiydlwRw';
 const map = new mapboxgl.Map({
@@ -65,23 +66,18 @@ const renderList = cemeteries => {
     // listresource.appendChild(resourcestate)
     // listresource.classList.add("cemetery-block")
     // document.querySelector('#cemeteries-list').appendChild(listresource)
-
+    // marker.addEventListener("click", readMore())
     //add to map
     var el = document.createElement('div');
     el.className = 'marker-red';
     var marker = new mapboxgl.Marker(el)
-      .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
+    .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
       .setPopup(
-        new mapboxgl.Popup({ offset: 25 }) // add popups
+        new mapboxgl.Popup() // add popups
           .setHTML(
-            `<img src="` +
-            element["feat_img"] +
-            `">`
-            +
-            '<h3 class="cemetery-name">' +
-            element["name"] +
-            '</h3>'
-            + `<button class="read-more-button" id=`
+            
+
+            `<button class="read-more-button" id=`
             + element["id"] +
             ` onclick="readMore()">Read More</button>`
           )
@@ -139,6 +135,24 @@ categories.forEach(category => {
   }
 
   // Run a keyword search
+  // document.querySelector('#search-btn').addEventListener('click', function(e) {
+  //   e.preventDefault()
+  //   if (document.querySelector('#search-bar').value.length !== 0){
+  //   keywordSearch()}
+  //   else{
+  //     loadCemeteries()
+  //   }
+  // })
+
+  searchForm.addEventListener('change', function(e) {
+    e.preventDefault()
+    if (document.querySelector('#search-bar').value.length !== 0){
+    keywordSearch()}
+    else{
+      loadCemeteries()
+    }
+  })
+
   document.querySelector('#search-btn').addEventListener('click', function(e) {
     e.preventDefault()
     if (document.querySelector('#search-bar').value.length !== 0){
@@ -184,26 +198,32 @@ categories.forEach(category => {
 let cemeteryDescription = document.querySelector("#cemeteryDescription")
 function readMore() {
   let readMoreButton = document.querySelector(".read-more-button")
-  filterTags.style.diplay = "none"
-  mapPopUp.style.display = "inline"
+  filterTags.style.diplay = "flex"
+  mapPopUp.style.display = "flex"
+  mapPopUp.style.transform = "translateX(400px)"
+  mapPopUp.style.transition = ".75s"
+  mapPopUp.style.transitionTimingFunction = "ease"
   cemeteryImage.innerHTML =
     `
     <div class="pop-up-container" style="position:relative">
-    <button onclick="closeModal()" class="close-button" style="position:sticky; right: 0px"><i class="fa-solid fa-x"></i></button>
+    <button onclick="closeModal()" class="close-button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
     <div>
     <img class="pop-up-image" src='${cemeteries[(readMoreButton.id)].feat_img}'>
-    </div>
-    <div class="cemetery-information">
     <h1>${cemeteries[(readMoreButton.id)].name}</h1>
     <h3>${cemeteries[(readMoreButton.id)].city}, ${cemeteries[(readMoreButton.id)].state}</h3>
-    <p>${cemeteries[(readMoreButton.id)].description}</p>
+    <h4>Number of Graves: ${cemeteries[(readMoreButton.id)].number_of_graves}</h4>
+    <h4>Years of Operation: ${cemeteries[(readMoreButton.id)].years_of_operation}</h4>
+    </div>
+    <div class="cemetery-information" style="height: min-content">
+    <p style="padding: 0">${cemeteries[(readMoreButton.id)].description}</p>
     </div>
     </div>`
 
 }
 
 function closeModal() {
-  mapPopUp.style.display = "none"
+  mapPopUp.style.transform = "translateX(0px)"
+  mapPopUp.style.transition = ".75s"
 }
 
 // Stuff to run when the DOM is ready

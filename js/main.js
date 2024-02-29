@@ -72,17 +72,41 @@ const renderList = cemeteries => {
     el.className = 'marker-red';
     var marker = new mapboxgl.Marker(el)
     .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
-      .setPopup(
-        new mapboxgl.Popup() // add popups
-          .setHTML(
+      // .setPopup(
+      //   new mapboxgl.Popup() // add popups
+      //     .setHTML(
             
 
-            `<button class="read-more-button" id=`
-            + element["id"] +
-            ` onclick="readMore()">Read More</button>`
-          )
-      )
+      //       `<button class="read-more-button" id=`
+      //       + element["id"] +
+      //       ` onclick="readMore()">Read More</button>`
+      //     )
+      // )
       .addTo(map);
+      let markerel = marker.getElement()
+        markerel.addEventListener('click', () => {
+          filterTags.style.diplay = "flex"
+          mapPopUp.style.display = "flex"
+          mapPopUp.style.transform = "translateX(400px)"
+          mapPopUp.style.transition = ".75s"
+          mapPopUp.style.transitionTimingFunction = "ease"
+          cemeteryImage.innerHTML =
+            `
+            <div class="pop-up-container" style="position:relative">
+            <button onclick="closeModal()" class="close-button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
+            <div>
+            <img class="pop-up-image" src='${element.feat_img}'>
+            <h1>${element.name}</h1>
+            <h3>${element.city}, ${element.state}</h3>
+            <h4>Number of Graves: ${element.number_of_graves}</h4>
+            <h4>Years of Operation: ${element.years_of_operation}</h4>
+            </div>
+            <div class="cemetery-information" style="height: min-content">
+            <p style="padding: 0">${element.description}</p>
+            </div>
+            </div>`
+    })
+    
     currentMarkers.push(marker)
   })
 }
@@ -194,32 +218,6 @@ categories.forEach(category => {
     renderList(filteredArray)
   }
 })
-
-let cemeteryDescription = document.querySelector("#cemeteryDescription")
-function readMore() {
-  let readMoreButton = document.querySelector(".read-more-button")
-  filterTags.style.diplay = "flex"
-  mapPopUp.style.display = "flex"
-  mapPopUp.style.transform = "translateX(400px)"
-  mapPopUp.style.transition = ".75s"
-  mapPopUp.style.transitionTimingFunction = "ease"
-  cemeteryImage.innerHTML =
-    `
-    <div class="pop-up-container" style="position:relative">
-    <button onclick="closeModal()" class="close-button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
-    <div>
-    <img class="pop-up-image" src='${cemeteries[(readMoreButton.id)].feat_img}'>
-    <h1>${cemeteries[(readMoreButton.id)].name}</h1>
-    <h3>${cemeteries[(readMoreButton.id)].city}, ${cemeteries[(readMoreButton.id)].state}</h3>
-    <h4>Number of Graves: ${cemeteries[(readMoreButton.id)].number_of_graves}</h4>
-    <h4>Years of Operation: ${cemeteries[(readMoreButton.id)].years_of_operation}</h4>
-    </div>
-    <div class="cemetery-information" style="height: min-content">
-    <p style="padding: 0">${cemeteries[(readMoreButton.id)].description}</p>
-    </div>
-    </div>`
-
-}
 
 function closeModal() {
   mapPopUp.style.transform = "translateX(0px)"

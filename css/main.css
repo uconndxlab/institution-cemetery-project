@@ -433,7 +433,7 @@ body {
 
 #map-popup {
   position: absolute;
-  background-color: rgb(247, 249, 250);;
+  background-color: rgb(237, 240, 242);;
   left: 0%;
   top: 0%;
   z-index: 20;
@@ -517,7 +517,13 @@ body {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width:500px){
+  #map-popup {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:700px) {
   .pop-up-container {
     flex-direction: column;
   }

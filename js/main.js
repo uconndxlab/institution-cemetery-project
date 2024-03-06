@@ -177,7 +177,7 @@ categories.forEach(category => {
     }
   })
 
-  document.querySelector('#search-btn').addEventListener('click', function(e) {
+  searchForm.addEventListener('submit', function(e) {
     e.preventDefault()
     if (document.querySelector('#search-bar').value.length !== 0){
     keywordSearch()}
@@ -185,6 +185,15 @@ categories.forEach(category => {
       loadCemeteries()
     }
   })
+
+  // document.querySelector('#search-btn').addEventListener('click', function(e) {
+  //   e.preventDefault()
+  //   if (document.querySelector('#search-bar').value.length !== 0){
+  //   keywordSearch()}
+  //   else{
+  //     loadCemeteries()
+  //   }
+  // })
 
   async function keywordSearch(){
     cemeteries = [];
@@ -220,7 +229,7 @@ categories.forEach(category => {
 })
 
 function closeModal() {
-  mapPopUp.style.transform = "translateX(0px)"
+  mapPopUp.style.transform = "translateX(-100px)"
   mapPopUp.style.transition = ".75s"
 }
 

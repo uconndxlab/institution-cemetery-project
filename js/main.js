@@ -70,6 +70,20 @@ const renderList = cemeteries => {
     //add to map
     var el = document.createElement('div');
     el.className = 'marker-red';
+
+    el.addEventListener('click', function(e){
+      // get all the elements with class "marker2"
+      var x = document.getElementsByClassName("marker-red-clicked");
+      var i;
+      for (i = 0; i < x.length; i++) {
+        x[i].className = "marker-red"; // set "marker" as the class for each of those elements
+      }
+      // at this point all markers are back to the original state
+    
+      // now you set the class of the current clicked marker
+      this.className = 'marker-red-clicked'; //don't use the variable "el", it's out of the scope and can change, "this" is the current clicked element
+    })
+
     var marker = new mapboxgl.Marker(el)
     .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
       // .setPopup(
@@ -92,9 +106,6 @@ const renderList = cemeteries => {
           mapPopUp.style.transitionTimingFunction = "ease"
           cemeteryImage.innerHTML =
             `
-            <div class="pop-up-container" style="position:relative">
-            <button onclick="closeModal()" class="close-button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
-            <div>
             <img class="pop-up-image" src='${element.feat_img}'>
             <h1>${element.name}</h1>
             <h3>${element.city}, ${element.state}</h3>
@@ -102,9 +113,7 @@ const renderList = cemeteries => {
             <h4>Years of Operation: ${element.years_of_operation}</h4>
             </div>
             <div class="cemetery-information" style="height: min-content">
-            <p style="padding: 0">${element.description}</p>
-            </div>
-            </div>`
+            <p style="padding: 0">${element.description}</p>`
     })
     
     currentMarkers.push(marker)

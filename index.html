@@ -100,10 +100,12 @@
         </ul>
       </div>
       <div id="map">
-        <div id="map-popup" style="z-index: 150;">
-          <div id="cemeteryImage"></div>
-          <div id="cemeteryDescription"></div>
-          <div id="title"></div>
+        <div id="map-popup" style="z-index: 150; " class="sidebar">
+          <div class="pop-up-container top-bar" style="position:relative">
+            <div class="top-bar-wrap " style="">
+            <button onclick="closeModal()" class="close-button button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
+          <div id="cemeteryImage" class="sidebar-text"></div>
+        </div>
         </div>
       </div>
     </div>

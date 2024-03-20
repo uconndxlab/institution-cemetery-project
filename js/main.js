@@ -69,20 +69,17 @@ const renderList = cemeteries => {
     // marker.addEventListener("click", readMore())
     //add to map
     var el = document.createElement('div');
-    el.className = 'marker-red';
+    el.classList.add('marker-red');
 
     el.addEventListener('click', function(e){
-      // get all the elements with class "marker2"
-      var x = document.getElementsByClassName("marker-red-clicked");
+      var x = document.getElementsByClassName("marker-red");
       var i;
       for (i = 0; i < x.length; i++) {
-        x[i].className = "marker-red"; // set "marker" as the class for each of those elements
+        x[i].classList.add(('marker-red')) // set "marker" as the class for each of those elements
+        x[i].classList.remove(('marker-red-clicked'))
       }
-      // at this point all markers are back to the original state
-    
-      // now you set the class of the current clicked marker
-      this.className = 'marker-red-clicked'; //don't use the variable "el", it's out of the scope and can change, "this" is the current clicked element
-    })
+      this.classList.add('marker-red-clicked','marker-red', "mapboxgl-marker", "mapboxgl-marker-anchor-center");
+     })
 
     var marker = new mapboxgl.Marker(el)
     .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
@@ -101,7 +98,7 @@ const renderList = cemeteries => {
         markerel.addEventListener('click', () => {
           filterTags.style.diplay = "flex"
           mapPopUp.style.display = "flex"
-          mapPopUp.style.transform = "translateX(400px)"
+          mapPopUp.style.transform = "translateX(500px)"
           mapPopUp.style.transition = ".75s"
           mapPopUp.style.transitionTimingFunction = "ease"
           cemeteryImage.innerHTML =

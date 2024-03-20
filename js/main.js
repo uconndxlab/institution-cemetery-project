@@ -1,5 +1,5 @@
 const cemeterylist = document.querySelector('#cemeteries-list');
-const filterButton = document.querySelector('#filter-toggle')
+const filterButton = document.querySelector('.filter-button')
 const filterTags = document.querySelector('.filter-tags')
 const mapPopUp = document.querySelector('#map-popup')
 const cemeteryImage = document.querySelector('#cemeteryImage')

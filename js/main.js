@@ -13,6 +13,7 @@ const map = new mapboxgl.Map({
 });
 
 map.addControl(new mapboxgl.NavigationControl());
+map.setStyle('mapbox://styles/mapbox/dark-v9')
 
 //clear current map, get data, put data into array, map data
 var currentMarkers = []

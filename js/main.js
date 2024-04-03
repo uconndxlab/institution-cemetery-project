@@ -2,6 +2,7 @@ const cemeterylist = document.querySelector('#cemeteries-list');
 const filterButton = document.querySelector('.filter-button')
 const filterTags = document.querySelector('.filter-tags')
 const mapPopUp = document.querySelector('#map-popup')
+const cemeteryPopUp = document.querySelector('#sidebar-text')
 const cemeteryImage = document.querySelector('#cemeteryImage')
 const searchForm = document.querySelector("#search-form")
 /*setup mapbox*/
@@ -13,17 +14,24 @@ const map = new mapboxgl.Map({
 });
 
 map.addControl(new mapboxgl.NavigationControl());
-map.setStyle('mapbox://styles/mapbox/dark-v9')
+map.setStyle('mapbox://styles/uconndxgroup/clua5v1ze01ih01nwfjod29sl')
 
 //clear current map, get data, put data into array, map data
 var currentMarkers = []
 
 filterButton.addEventListener('click', function () {
   if (filterTags.style.display === "none") {
+    filterTags.style.display = "none"
+
+    // mapPopUp.style.display = "flex"
+    mapPopUp.style.transform = "translateX(500px)"
     filterTags.style.display = "block"
-  }
+    cemeteryPopUp.style.display = "none"
+
+ }
   else {
     filterTags.style.display = "none"
+    
   }
 })
 
@@ -97,8 +105,9 @@ const renderList = cemeteries => {
       .addTo(map);
       let markerel = marker.getElement()
         markerel.addEventListener('click', () => {
-          filterTags.style.diplay = "flex"
-          mapPopUp.style.display = "flex"
+          filterTags.style.display = "none"
+
+          // mapPopUp.style.display = "flex"
           mapPopUp.style.transform = "translateX(500px)"
           mapPopUp.style.transition = ".75s"
           mapPopUp.style.transitionTimingFunction = "ease"
@@ -116,6 +125,22 @@ const renderList = cemeteries => {
     
     currentMarkers.push(marker)
   })
+}
+
+if (document.querySelectorAll(".marker-red-clicked").length = 0) {
+  filterButton.addEventListener('click', function () {
+    if (filterTags.style.display === "none") {
+      mapPopUp.style.transform = "translateX(500px)"
+      filterTags.style.display = "block"
+      cemeteryPopUp.style.display = "none"
+  
+   }
+    else {
+      mapPopUp.style.display = "none"
+
+
+      
+    }})
 }
 
 //filtered array of cemeteries
@@ -239,6 +264,11 @@ function closeModal() {
   mapPopUp.style.transform = "translateX(-100px)"
   mapPopUp.style.transition = ".75s"
 }
+
+function closeFilterModal() {
+  filterTags.style.display = "none"
+}
+
 
 // Stuff to run when the DOM is ready
 window.addEventListener('DOMContentLoaded', async () => {

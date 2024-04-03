@@ -229,22 +229,10 @@ footer {
   margin: auto;
 }
 
-/*map*/
-.marker-red {
-  background-image: url('../img/mapbox-icon-red.png');
-  background-size: cover;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
+.label-contain {
+  display: flex;
+  flex-direction: column;
 }
-
-.marker-red-clicked {
-  filter: brightness(100);
-  width: 50px;
-  height: 50px;
-}
-
 
 /* CUSTOM CHECKBOXES /*
 /* The container */
@@ -261,71 +249,15 @@ footer {
 
 /* Hide the browser's default checkbox */
 .checkbox-contain input {
-  position: absolute;
-  opacity: 0;
   cursor: pointer;
-  height: 0;
-  width: 0;
-}
 
-.filter-button {
-  background-color: white;
-  border: none;
-  width: 30px;
-  height: 30px;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
 }
 
 .checkmark {
-  border-radius: 15px;
-  border: 1px black solid;
-  padding: 5px 10px;
   margin: 5px;
   display: inline-block;
   white-space: nowrap;
   font-size: 14px;
-}
-
-input[type="text"] {
-  font-size: 12px;
-}
-
-select {
-  font-size: 14px;
-}
-
-input::placeholder {
-  opacity: 0.5;
-  color: #6E6E6E;
-  font-size: 12px;
-}
-
-h4 {
-  font-size: 14px;
-}
-
-#search-bar {
-  width: 300px;
-  padding: 10px;
-  color: #6E6E6E;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
-}
-
-.fa-magnifying-glass,
-.fa-filter {
-  color: #6E6E6E
-}
-
-i {
-  color: black
-}
-
-.label-contain {
-  display: flex;
-  flex-direction: column;
 }
 
 /* Create a custom checkbox */
@@ -334,8 +266,7 @@ i {
 /* On mouse-over, add a grey background color */
 .checkbox-contain:hover input~.checkmark,
 .checkbox-contain input:checked~.checkmark {
-  background-color: #1F4865;
-  color: white;
+
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -361,7 +292,6 @@ i {
   transform: rotate(45deg);
 }
 
-
 .tags-container {
   display: flex;
   gap: 20px;
@@ -375,6 +305,71 @@ button:hover~.tool-tip {
   visibility: visible
 }
 
+
+.filter-button {
+  background-color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+}
+
+input[type="text"] {
+  font-size: 12px;
+}
+
+select {
+  font-size: 14px;
+}
+
+input::placeholder {
+  opacity: 0.5;
+  color: #6E6E6E;
+  font-size: 12px;
+}
+
+
+
+h4 {
+  font-size: 14px;
+}
+
+.marker-red {
+  background-image: url('../img/mapbox-icon-red.png');
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.marker-red-clicked {
+  filter: brightness(100);
+  width: 50px;
+  height: 50px;
+}
+
+
+#search-bar {
+  width: 300px;
+  padding: 10px;
+  color: #6E6E6E;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+}
+
+.fa-magnifying-glass,
+.fa-filter {
+  color: #6E6E6E
+}
+
+i {
+  color: black
+}
+
+
 /* button {
   border: none;
   background-color: #fff;
@@ -385,15 +380,19 @@ height: 30px
 ;} */
 
 .filters {
-  background-color: white;
-  padding: 10px;
-  margin: 10px 10px 10px 0px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+  background-color: rgb(237, 240, 242);
+  height: 100%;
+  padding: 10px
 }
 
 .filter-tags {
-  padding: 10px
+  background-color: rgb(237, 240, 242);
+  left: 0%;
+  top: 0%;
+  z-index: 22;
+  width: 100%;
+  height: 100%;
+  box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (min-width: 960px) {
@@ -409,7 +408,6 @@ height: 30px
     position: sticky;
     top: 20px;
     min-width: 220px;
-    height: max-content;
   }
 
   #cemeteries-list {
@@ -417,13 +415,6 @@ height: 30px
 
   }
 
-}
-
-@media screen and (min-width: 400px) {
-
-  .label-contain {
-    flex-direction: row;
-  }
 }
 
 body {
@@ -461,10 +452,7 @@ body {
   font-size: 12px;
 }
 
-.tags {
-  margin: 5px;
-  max-width: min-content;
-}
+
 
 .pop-up-container {
   /* display: flex; */
@@ -480,7 +468,9 @@ body {
 .sidebar {
   height:100%;
   width:200px;
+  
 }
+
 
 .top-bar {
   position:sticky;
@@ -511,6 +501,8 @@ body {
 .cemetery-information {
   width: 100%;
 }
+
+
 
 .read-more-button:hover {
   background-color: rgb(33, 78, 115);

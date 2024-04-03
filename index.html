@@ -65,42 +65,48 @@
       </div>
       </div>
       </div>
-      <div class="filter-tags" style="display:none; position: absolute; z-index: 100; right: 25px; top:25px;">
-        <section class="filters" style="  max-width: min-content;">
-          <div style="  max-width: min-content;">
-            <p class="tags"><strong>Tags:</strong></p>
-            <div class="label-contain">
-              <label for="psychiatric" class="checkbox-contain">
-                <input type="checkbox" id="psychiatric" value="Psychiatric Hospital" class="category">
-                <span class="checkmark rounded-pill"> Psychiatric Hospital</span>
-              </label>
-              <label for="active" class="checkbox-contain">
-                <input type="checkbox" id="active" value="Active Facility" class="category">
-                <span class="checkmark rounded-pill">Active Facility</span>
-              </label>
-              <label for="state-school" class="checkbox-contain">
-                <input type="checkbox" id="state-school" value="State School" class="category">
-                <span class="checkmark rounded-pill">State School</span>
-              </label>
-            </div>
-          </div>
-          <div>
-            <label for="state"><strong>State:</strong></label>
-            <br>
-            <select id="state" class="" name="state" style="margin-top:10px">
-              <option value="all">All</option>
-              <option value="PA">PA</option>
-              <option value="NY">NY</option>
-            </select>
-          </div>
-  
-        </section>
-        <ul id="cemeteries-list" class="">
-  
-        </ul>
-      </div>
       <div id="map">
         <div id="map-popup" style="z-index: 150; " class="sidebar">
+          <div class="filter-tags" style="display:none; position: relative; z-index: 100;">
+            <div class="pop-up-container top-bar" style="position:relative">
+              <div class="top-bar-wrap " style="">
+            <button onclick="closeFilterModal()" class="close-button button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
+            <section class="filters">
+              <div>
+                <p class="tags"><strong>Types of Facilities:</strong></p>
+                <div class="label-contain">
+                  <label for="psychiatric" class="checkbox-contain">
+                    <input type="checkbox" id="psychiatric" value="Psychiatric Hospital" class="category">
+                    <span class="checkmark rounded-pill"> Psychiatric Hospital</span>
+                  </label>
+                  <label for="active" class="checkbox-contain">
+                    <input type="checkbox" id="active" value="Active Facility" class="category">
+                    <span class="checkmark rounded-pill">Active Facility</span>
+                  </label>
+                  <label for="state-school" class="checkbox-contain">
+                    <input type="checkbox" id="state-school" value="State School" class="category">
+                    <span class="checkmark rounded-pill">State School</span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <label for="state"><strong>State:</strong></label>
+                <br>
+                <select id="state" class="" name="state" style="margin-top:10px">
+                  <option value="all">All</option>
+                  <option value="PA">PA</option>
+                  <option value="NY">NY</option>
+                </select>
+              </div>
+      
+            </section>
+            <ul id="cemeteries-list" class="">
+      
+            </ul>
+          </div>
+          </div>
+          </div>
+          
           <div class="pop-up-container top-bar" style="position:relative">
             <div class="top-bar-wrap " style="">
             <button onclick="closeModal()" class="close-button button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>

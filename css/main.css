@@ -9,7 +9,7 @@ nav {
 }
 
 .nav-inner {
-  max-width: 1000px;
+  max-width: 1200px;
   display: flex;
   justify-content: center;
   margin: auto
@@ -31,7 +31,7 @@ article h2 {
 img {
   width: 100%;
   position: relative;
-  max-width: 1000px
+  max-width: 1200px
 }
 
 h3 {
@@ -85,7 +85,6 @@ footer div {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin: 5px
 }
 
 .filter-container {
@@ -155,6 +154,7 @@ footer {
   background-color: #1F4865;
   margin: 0;
   padding: 50px
+
 }
 
 .cemetery-block h2 {
@@ -166,9 +166,9 @@ footer {
 
 .container {
   margin: 0 auto;
-  max-width: 1000px;
-  padding: 0;
-  padding-top: 20px;
+  max-width: 1200px;
+  max-height: 100%;
+  padding: 10px;
 }
 
 .cemetery-block p {
@@ -336,7 +336,7 @@ h4 {
 }
 
 .marker-red {
-  background-image: url('../img/mapbox-icon-red.png');
+  background-image: url('../img/mapbox-icon-beige.png');
   background-size: cover;
   width: 40px;
   height: 40px;

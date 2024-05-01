@@ -14,3 +14,14 @@ View the website here: (https://uconndxlab.github.io/institution-cemetery-projec
 - [ ] Create Alt tags for each image in the Pop Ups
 - [ ] Input the rest of the information from the table into the spreadsheet
 - [ ] Fix Napkin configuration
+
+## Helpful Screenshots ##
+![Screenshot of Pop Up Flow](img/mockup-1.png)
+This is how they would like the pop up to look like when you initially click on the pinpoint
+
+![Screenshot of Pop Up Flow](img/mockup-2.png)
+This is how they would like the modal window to look after you click the Learn More button
+
+## Communication in this Project ##
+Most of the communication in this prjoect is done via Email with Heather and Chelsea, however, Basecamp contains some helpful documents such as the Google Sheet with all of the data as well as my project document
+

@@ -19,11 +19,11 @@ map.setStyle('mapbox://styles/uconndxgroup/clua5v1ze01ih01nwfjod29sl')
 //clear current map, get data, put data into array, map data
 var currentMarkers = []
 
+// Filter button toggle display
 filterButton.addEventListener('click', function () {
   if (filterTags.style.display === "none") {
     filterTags.style.display = "none"
 
-    // mapPopUp.style.display = "flex"
     mapPopUp.style.transform = "translateX(500px)"
     filterTags.style.display = "block"
     cemeteryPopUp.style.display = "none"
@@ -58,25 +58,7 @@ const renderList = cemeteries => {
   }
   cemeterylist.innerHTML = '';
   cemeteries.forEach(element => {
-    // var resourcelabel = document.createElement("p")
-    // resourcelabel.classList.add("cemetery-label")
-    // for (var i = 0; i < element["tags"].length; i++) {
-    //   var resourcelabelspan = document.createElement("span")
-    //   resourcelabelspan.innerHTML = element["tags"][i]
-    //   resourcelabel.appendChild(resourcelabelspan)
-    // }
-    // var resourcetitle = document.createElement("h2")
-    // resourcetitle.innerHTML = element["name"]
-    // var resourcestate = document.createElement("p")
-    // resourcestate.innerHTML = element["state"]
-    // var listresource = document.createElement("li")
-    // listresource.appendChild(resourcelabel)
-    // listresource.appendChild(resourcetitle)
-    // listresource.appendChild(resourcestate)
-    // listresource.classList.add("cemetery-block")
-    // document.querySelector('#cemeteries-list').appendChild(listresource)
-    // marker.addEventListener("click", readMore())
-    //add to map
+    //Toggle markers to be either beige when innactive or white when active
     var el = document.createElement('div');
     el.classList.add('marker-red');
 
@@ -92,22 +74,14 @@ const renderList = cemeteries => {
 
     var marker = new mapboxgl.Marker(el)
     .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
-      // .setPopup(
-      //   new mapboxgl.Popup() // add popups
-      //     .setHTML(
-            
-
-      //       `<button class="read-more-button" id=`
-      //       + element["id"] +
-      //       ` onclick="readMore()">Read More</button>`
-      //     )
-      // )
       .addTo(map);
       let markerel = marker.getElement()
         markerel.addEventListener('click', () => {
           filterTags.style.display = "none"
 
-          // mapPopUp.style.display = "flex"
+          // Styling for side bar menu when clicked
+          //Transition slide in
+          //showing basic information in the side menu
           mapPopUp.style.transform = "translateX(500px)"
           mapPopUp.style.transition = ".75s"
           mapPopUp.style.transitionTimingFunction = "ease"
@@ -190,16 +164,7 @@ categories.forEach(category => {
     filterCemeteries()
   }
 
-  // Run a keyword search
-  // document.querySelector('#search-btn').addEventListener('click', function(e) {
-  //   e.preventDefault()
-  //   if (document.querySelector('#search-bar').value.length !== 0){
-  //   keywordSearch()}
-  //   else{
-  //     loadCemeteries()
-  //   }
-  // })
-
+  //preventing search button from submitting when click enter
   searchForm.addEventListener('change', function(e) {
     e.preventDefault()
     if (document.querySelector('#search-bar').value.length !== 0){
@@ -209,6 +174,7 @@ categories.forEach(category => {
     }
   })
 
+  //refreshing cemeteries when new values are added to the search button and enter is clicked
   searchForm.addEventListener('submit', function(e) {
     e.preventDefault()
     if (document.querySelector('#search-bar').value.length !== 0){
@@ -218,14 +184,6 @@ categories.forEach(category => {
     }
   })
 
-  // document.querySelector('#search-btn').addEventListener('click', function(e) {
-  //   e.preventDefault()
-  //   if (document.querySelector('#search-bar').value.length !== 0){
-  //   keywordSearch()}
-  //   else{
-  //     loadCemeteries()
-  //   }
-  // })
 
   async function keywordSearch(){
     cemeteries = [];
@@ -260,6 +218,7 @@ categories.forEach(category => {
   }
 })
 
+//slide out transition when x button is clicked on side bar menu
 function closeModal() {
   mapPopUp.style.transform = "translateX(-100px)"
   mapPopUp.style.transition = ".75s"

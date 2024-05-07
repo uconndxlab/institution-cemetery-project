@@ -35,22 +35,35 @@
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
-  <nav class="p-3">
-    <div class="d-flex justify-content-between nav-inner">
-      <a style="font-family:'Libre Baskerville', serif">The Institution Cemetery Project</a>
-      <div class="gap-5 navigation-items">
-        <a href="/" class="text-white">About</a>
-        <a href="/" class="text-white">Team</a>
-        <a href="/" class="text-white">Research Process</a>
-        <a href="/" class="text-white">Link</a>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">The Institution Cemetery Project</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="nav-link nav-link-ltr active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-ltr" aria-current="page" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-ltr" href="#">Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-ltr" href="#">Research Process</a>
+          </li>
+        </ul>
       </div>
-      <!-- <button class="d-flex align-items-center"><i class="fa-solid fa-bars text-white"></i></button> -->
     </div>
   </nav>
-  <div class="container">
+
     <div style="position: relative">
       <div class="filter-container" style="position: absolute; z-index: 100; right: 45px; top: 10px ">
-        <div style="display: flex; align-items: center; ">
+        <div style="display: flex; flex-direction:column;">
           <form role="search" id="search-form">
             <input id="search-bar" type="text" placeholder="Search Insitution Cemetery" style="position: relative; left: 10px;"></input>
             <!-- <button id="search-btn" type="submit" class="btn btn-search"> -->
@@ -58,83 +71,51 @@
               </i>
             <!-- </button> -->
           </form>  
-        <div style="display: flex">
-        <button class="filter-button"><i class="fa-solid fa-filter" id="filter-toggle"></i></button>
+        <div style="display: flex;justify-content:flex-end;padding:11px 11px 0px 0px">
+        <!-- <button class="filter-button"><i class="fa-solid fa-filter" id="filter-toggle"></i></button>-->
+        <section class="filters">
+          <div>
+            <p style="margin-bottom:5px;"><strong>Types of Facilities:</strong></p>
+            <div class="label-contain">
+              <label for="psychiatric" class="checkbox-contain">
+                <input type="checkbox" id="psychiatric" value="Psychiatric Hospital" class="category">
+                <span class="checkmark rounded-pill"> Psychiatric Hospital</span>
+              </label>
+              <label for="active" class="checkbox-contain">
+                <input type="checkbox" id="active" value="Active Facility" class="category">
+                <span class="checkmark rounded-pill">Active Facility</span>
+              </label>
+              <label for="state-school" class="checkbox-contain">
+                <input type="checkbox" id="state-school" value="State School" class="category">
+                <span class="checkmark rounded-pill">State School</span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label for="state"><strong>State:</strong></label>
+            <br>
+            <select id="state" class="" name="state" style="margin-top:10px">
+              <option value="all">All</option>
+              <option value="PA">PA</option>
+              <option value="NY">NY</option>
+            </select>
+          </div>
+  
+        </section>
         <!-- <div class="tool-tip" style="position: relative; left: 10px">
           <div class="arrow-left"></div>
           <div class="filter-name">Filter</div>
         </div> -->
+        </div>
+        </div>
       </div>
-      </div>
-      </div>
+      
       <div id="map">
-        <div id="map-popup" style="z-index: 150; " class="sidebar">
-          <div class="filter-tags" style="display:none; position: relative; z-index: 100;">
-            <div class="pop-up-container top-bar" style="position:relative">
-              <div class="top-bar-wrap " style="">
-            <button onclick="closeFilterModal()" class="close-button button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
-            <section class="filters">
-              <div>
-                <p class="tags"><strong>Types of Facilities:</strong></p>
-                <div class="label-contain">
-                  <label for="psychiatric" class="checkbox-contain">
-                    <input type="checkbox" id="psychiatric" value="Psychiatric Hospital" class="category">
-                    <span class="checkmark rounded-pill"> Psychiatric Hospital</span>
-                  </label>
-                  <label for="active" class="checkbox-contain">
-                    <input type="checkbox" id="active" value="Active Facility" class="category">
-                    <span class="checkmark rounded-pill">Active Facility</span>
-                  </label>
-                  <label for="state-school" class="checkbox-contain">
-                    <input type="checkbox" id="state-school" value="State School" class="category">
-                    <span class="checkmark rounded-pill">State School</span>
-                  </label>
-                </div>
-              </div>
-              <div>
-                <label for="state"><strong>State:</strong></label>
-                <br>
-                <select id="state" class="" name="state" style="margin-top:10px">
-                  <option value="all">All</option>
-                  <option value="PA">PA</option>
-                  <option value="NY">NY</option>
-                </select>
-              </div>
-      
-            </section>
-            <ul id="cemeteries-list" class="">
-      
-            </ul>
-          </div>
-          </div>
-          </div>
-          
-          <div class="pop-up-container top-bar" style="position:relative">
-            <div class="top-bar-wrap " style="">
-            <button onclick="closeModal()" class="close-button button" style="position:absolute;"><i class="fa-solid fa-x"></i></button>
-          <div id="cemeteryImage" class="sidebar-text"></div>
-        </div>
-        </div>
+        
+            <ul id="cemeteries-list" class="">        
       </div>
-    </div>
-  </div>
-  </div>
-  <footer>
-    <div>
-      <h2>The Institution Cemetery Project</h2>
-    </div>
-    <div>
-      <!-- <div>
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      <div>
-        <i class="fa-brands fa-facebook"></i>
-      </div>
-      <div>
-        <i class="fa-solid fa-globe"></i>
-      </div> -->
-    </div>
-  </footer>
+
+  
   <script src="js/vendor/modernizr-3.8.0.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

@@ -79,7 +79,7 @@ const renderList = cemeteries => {
             <h3>${element.name}</h3>
             <p><strong>${element.city}, ${element.state}</strong></p>
             <p>Number of Graves: ${element.number_of_graves}</p>
-            <p>Years of Cemetery Operation: ${element.years_of_operation}</p>
+            <p>Cemetery Operation: ${element.years_of_operation}</p>
             <p style="margin-top:10px;"><a href="${element.link}">Learn More</a><p>`
     )
     )

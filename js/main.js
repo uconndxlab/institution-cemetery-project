@@ -1,9 +1,6 @@
 const cemeterylist = document.querySelector('#cemeteries-list');
-const filterButton = document.querySelector('.filter-button')
+// const filterButton = document.querySelector('.filter-button')
 const filterTags = document.querySelector('.filter-tags')
-const mapPopUp = document.querySelector('#map-popup')
-const cemeteryPopUp = document.querySelector('#sidebar-text')
-const cemeteryImage = document.querySelector('#cemeteryImage')
 const searchForm = document.querySelector("#search-form")
 /*setup mapbox*/
 mapboxgl.accessToken = 'pk.eyJ1IjoidGhlbmF0YXR0YWNrIiwiYSI6ImNscHZsbnQ1eTA1ZWsyam54eDEyaWJxZmEifQ.wHJKEX_kIr4v6ouiydlwRw';
@@ -19,21 +16,21 @@ map.setStyle('mapbox://styles/uconndxgroup/clua5v1ze01ih01nwfjod29sl')
 //clear current map, get data, put data into array, map data
 var currentMarkers = []
 
-// Filter button toggle display
-filterButton.addEventListener('click', function () {
-  if (filterTags.style.display === "none") {
-    filterTags.style.display = "none"
+// // Filter button toggle display
+// filterButton.addEventListener('click', function () {
+//   if (filterTags.style.display === "none") {
+//     filterTags.style.display = "none"
 
-    mapPopUp.style.transform = "translateX(500px)"
-    filterTags.style.display = "block"
-    cemeteryPopUp.style.display = "none"
+//     mapPopUp.style.transform = "translateX(50vw)"
+//     filterTags.style.display = "block"
+//     cemeteryPopUp.style.display = "none"
 
- }
-  else {
-    filterTags.style.display = "none"
+//  }
+//   else {
+//     filterTags.style.display = "none"
     
-  }
-})
+//   }
+// })
 
 //all cemeteries
 var cemeteries = []
@@ -74,47 +71,21 @@ const renderList = cemeteries => {
 
     var marker = new mapboxgl.Marker(el)
     .setLngLat([Number(element["longitude"]), Number(element["latitude"])])
-      .addTo(map);
-      let markerel = marker.getElement()
-        markerel.addEventListener('click', () => {
-          filterTags.style.display = "none"
-
-          // Styling for side bar menu when clicked
-          //Transition slide in
-          //showing basic information in the side menu
-          mapPopUp.style.transform = "translateX(500px)"
-          mapPopUp.style.transition = ".75s"
-          mapPopUp.style.transitionTimingFunction = "ease"
-          cemeteryImage.innerHTML =
+    .setPopup(
+      new mapboxgl.Popup({ offset: 25 }) // add popups
+      .setHTML(
             `
             <img class="pop-up-image" src='${element.feat_img}'>
-            <h1>${element.name}</h1>
-            <h3>${element.city}, ${element.state}</h3>
-            <h4>Number of Graves: ${element.number_of_graves}</h4>
-            <h4>Years of Operation: ${element.years_of_operation}</h4>
-            </div>
-            <div class="cemetery-information" style="height: min-content">
-            <p style="padding: 0">${element.description}</p>`
-    })
-    
+            <h3>${element.name}</h3>
+            <p><strong>${element.city}, ${element.state}</strong></p>
+            <p>Number of Graves: ${element.number_of_graves}</p>
+            <p>Cemetery Operation: ${element.years_of_operation}</p>
+            <p style="margin-top:10px;"><a href="${element.link}">Learn More</a><p>`
+    )
+    )
+    .addTo(map);
     currentMarkers.push(marker)
   })
-}
-
-if (document.querySelectorAll(".marker-red-clicked").length = 0) {
-  filterButton.addEventListener('click', function () {
-    if (filterTags.style.display === "none") {
-      mapPopUp.style.transform = "translateX(500px)"
-      filterTags.style.display = "block"
-      cemeteryPopUp.style.display = "none"
-  
-   }
-    else {
-      mapPopUp.style.display = "none"
-
-
-      
-    }})
 }
 
 //filtered array of cemeteries
@@ -218,15 +189,15 @@ categories.forEach(category => {
   }
 })
 
-//slide out transition when x button is clicked on side bar menu
-function closeModal() {
-  mapPopUp.style.transform = "translateX(-100px)"
-  mapPopUp.style.transition = ".75s"
-}
+// //slide out transition when x button is clicked on side bar menu
+// function closeModal() {
+//   mapPopUp.style.transform = "translateX(-100px)"
+//   mapPopUp.style.transition = ".75s"
+// }
 
-function closeFilterModal() {
-  filterTags.style.display = "none"
-}
+// function closeFilterModal() {
+//   filterTags.style.display = "none"
+// }
 
 
 // Stuff to run when the DOM is ready

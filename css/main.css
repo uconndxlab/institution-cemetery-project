@@ -3,7 +3,7 @@
 }
 
 nav {
-  background-color: #1F4865;
+  background-color: #06141E;
   color: white;
   padding: 10px
 }
@@ -36,6 +36,7 @@ img {
 
 h3 {
   font-size: 18px; 
+  font-weight:600;
 }
 
 h1 {
@@ -380,9 +381,10 @@ height: 30px
 ;} */
 
 .filters {
-  background-color: rgb(237, 240, 242);
+  background-color: #fff;
   height: 100%;
-  padding: 10px
+  padding: 10px;
+  border-radius:10px;
 }
 
 .filter-tags {
@@ -425,7 +427,7 @@ body {
 
 #map {
 
-  height: 500px;
+  height: calc(100vh - 76px);
 }
 
 #map-popup {
@@ -436,7 +438,7 @@ body {
   z-index: 20;
   width: 40%;
   height: 100%;
-  translate: -500px;
+  translate: -50vw;
   /* overflow: auto; */
   box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.25);
 
@@ -451,8 +453,6 @@ body {
   padding: 10px;
   font-size: 12px;
 }
-
-
 
 .pop-up-container {
   /* display: flex; */
@@ -470,7 +470,6 @@ body {
   width:200px;
   
 }
-
 
 .top-bar {
   position:sticky;
@@ -502,8 +501,6 @@ body {
   width: 100%;
 }
 
-
-
 .read-more-button:hover {
   background-color: rgb(33, 78, 115);
 }
@@ -511,11 +508,47 @@ body {
 .mapboxgl-popup-content {
   padding: 0;
   margin: 0;
-  display: flex;
+  display: flex!important;
   flex-direction: column;
   align-items: center;
-  max-width: 175px;
-  border-radius: 10px;
+  max-width: 220px;
+  border-radius:10px!important;
+  text-align:center!important;
+  box-shadow: 0 0 7px rgba(0,0,0,.5)!important
+}
+
+.mapboxgl-popup-content p, .mapboxgl-popup-content h3{
+  margin-bottom:0px!important;
+}
+
+.pop-up-image{
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 100px;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 100px;
+  -moz-background-clip: padding;
+  border-radius: 100px;
+  background-clip: padding-box;
+  background-size: cover;
+  background-position: center center;
+  margin-bottom:10px;
+}
+
+.mapboxgl-popup-close-button{
+  font-size:25px;
+}
+
+.mapboxgl-popup-content a{
+  color:#fff;
+  background-color:#06141E;
+  text-decoration:none;
+  padding:10px;
+  border-radius:10px;
+}
+
+.mapboxgl-popup{
+  z-index:100;
 }
 
 .cemetery-name {
@@ -539,6 +572,10 @@ body {
 
 .navigation-items {
   display: flex;
+}
+
+.navigation-items a{
+  text-decoration:none;
 }
 
 .fa-bars {
@@ -578,4 +615,10 @@ body {
     height: 25px;
   }
 
+}
+
+@media (min-width: 992px){
+.navbar-expand-lg .navbar-collapse {
+  justify-content:flex-end;
+}
 }
